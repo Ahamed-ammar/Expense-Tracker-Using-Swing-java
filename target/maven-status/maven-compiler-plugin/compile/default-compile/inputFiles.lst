@@ -1,10 +1,7 @@
 F:\Java Projects\ExpenceTracker\src\main\java\com\extracker\Main.java
 F:\Java Projects\ExpenceTracker\src\main\java\com\extracker\dao\CategoriesDao.java
-F:\Java Projects\ExpenceTracker\src\main\java\com\extracker\dao\LandDao.java
 F:\Java Projects\ExpenceTracker\src\main\java\com\extracker\util\dbConnection.java
-F:\Java Projects\ExpenceTracker\src\main\java\com\extracker\gui\TrackerGui.java
 F:\Java Projects\ExpenceTracker\src\main\java\com\extracker\model\Categories.java
 F:\Java Projects\ExpenceTracker\src\main\java\com\extracker\dao\TrackerDao.java
 F:\Java Projects\ExpenceTracker\src\main\java\com\extracker\model\Expense.java
 F:\Java Projects\ExpenceTracker\src\main\java\com\extracker\gui\LandGui.java
-F:\Java Projects\ExpenceTracker\src\main\java\com\extracker\gui\CategriesGui.java
