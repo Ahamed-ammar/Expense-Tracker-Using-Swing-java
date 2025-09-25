@@ -1,5 +1,8 @@
 com\extracker\util\dbConnection.class
+com\extracker\gui\ExpenseGui.class
+com\extracker\gui\ExpenseGui$1.class
 com\extracker\gui\LandGui.class
+com\extracker\gui\ExpenseGui$2.class
 com\extracker\Main.class
 com\extracker\dao\CategoriesDao.class
 com\extracker\gui\CategoriesGui$1.class

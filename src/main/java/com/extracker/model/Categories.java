@@ -10,7 +10,7 @@ public class Categories {
         this.title = "";
         this.description = "";
     }
-
+    
     public Categories(String title, String description) {
         this.title = title;
         this.description = description;
