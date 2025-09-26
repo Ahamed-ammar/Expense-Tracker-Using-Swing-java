@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.*;
 import com.extracker.model.Expense;
 import com.extracker.util.dbConnection;
-
 public class TrackerDao {
 	private static final String SELECT_ALL_EXPENSES = "select * from expenses";
 	private static final String INSERT_EXPENSE = "insert into expenses (amount, date, category_id, notes) values (?, ?, ?, ?)";

@@ -99,7 +99,7 @@ class CategoriesGui extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
         
         // Make table selection work properly
-        categoryTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        categoryTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     }
 
     private void setupLayout() {
@@ -112,9 +112,10 @@ class CategoriesGui extends JFrame {
         gbc.anchor = GridBagConstraints.WEST;
         gbc.gridx = 0;
         gbc.gridy = 0;
+        //add(new JButton("Category Name:", BorderLayout.SOUTH));
         inputPanel.add(new JLabel("Category Name:"), gbc);
         gbc.gridx = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.VERTICAL;
         inputPanel.add(titleField, gbc);
 
         gbc.gridx = 0;
@@ -216,8 +217,9 @@ class CategoriesGui extends JFrame {
     }
 
     private void deleteCategory() {
-        int selectedRow = categoryTable.getSelectedRow();
-        if (selectedRow == -1) {
+        //int selectedRow = categoryTable.getSelectedRow();
+        int[] selectedRow = categoryTable.getSelectedRows();
+        if (selectedRow.length == -1) {
             JOptionPane.showMessageDialog(this, "Please select a category to delete.", "Selection Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -229,16 +231,21 @@ class CategoriesGui extends JFrame {
             
         if (confirm == JOptionPane.YES_OPTION) {
             try {
-                int categoryId = (Integer) tableModel.getValueAt(selectedRow, 0);
-                boolean success = categoryDao.deleteCategory(categoryId);
-                
-                if (success) {
-                    JOptionPane.showMessageDialog(this, "Category deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    clearFields();
-                    loadCategories();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Failed to delete category.", "Error", JOptionPane.ERROR_MESSAGE);
+                for(int i=0;i<selectedRow.length;i++) {
+                    int categoryId = (Integer) tableModel.getValueAt(selectedRow[i], 0);
+                    boolean success = categoryDao.deleteCategory(categoryId); 
+                    if (success) {
+                        JOptionPane.showMessageDialog(this, "Category deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        clearFields();
+                        loadCategories();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Failed to delete category.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
+                // int categoryId = (Integer) tableModel.getValueAt(selectedRow, 0);
+                // boolean success = categoryDao.deleteCategory(categoryId);
+                
+                
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error deleting category: " + ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
                 ex.printStackTrace();
